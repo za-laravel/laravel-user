@@ -7,8 +7,9 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Database\Eloquent\Model;
 use ZaLaravel\LaravelUser\Models\Role;
+use ZaLaravel\LaravelUser\Models\Interfaces\UserInterface;
 
-class User extends Model implements AuthenticatableContract, CanResetPasswordContract
+class User extends Model implements AuthenticatableContract, CanResetPasswordContract, UserInterface
 {
 
     use Authenticatable, CanResetPassword;

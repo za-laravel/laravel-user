@@ -4,9 +4,10 @@ namespace ZaLaravel\LaravelUser\Controllers;
 
 use ZaLaravel\LaravelUser\Requests;
 use ZaLaravel\LaravelAdmin\Controllers\AbstractAdminController;
-
 use ZaLaravel\LaravelUser\Models\Role;
 use ZaLaravel\LaravelUser\Models\User;
+use ZaLaravel\LaravelUser\Models\Interfaces\UserInterface;
+
 use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Http\Request;
 
@@ -17,9 +18,9 @@ class AdminUserController extends AbstractAdminController {
 	 *
 	 * @return Response
 	 */
-	public function index(Request $request)
+	public function index(Request $request, UserInterface $user)
 	{
-		$users = User::orderBy('id', 'desc');
+		$users = $user::orderBy('id', 'desc');
 
         if ($request->input('id')) {
             $users = $users->where('id', '=', $request->input('id'));
@@ -35,7 +36,7 @@ class AdminUserController extends AbstractAdminController {
 
         $users = $users->paginate(10);
 
-        return view('admin.user.index', [
+        return view('laravel-user::index', [
             'users' => $users,
             'f_id' => $request->input('id'),
             'f_email' => $request->input('email'),
