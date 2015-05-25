@@ -1,4 +1,4 @@
-@extends('admin.adminLayout')
+@extends('laravel-admin::layout')
 @section('title')
     Пользователи
 @stop
@@ -35,7 +35,6 @@
                             <th>id</th>
                             <th>Логин</th>
                             <th>email</th>
-                            <th>Поднятия</th>
                             <th>Заблокирован</th>
                             <th>&nbsp;</th>
                         </tr>
@@ -52,7 +51,6 @@
                             <th>
                                 {!! Form::text('email', $f_email, ['class' => 'form-control'] ) !!}
                             </th>
-                            <th>&nbsp;</th>
                             <th>&nbsp;</th>
                             <th>
                                 <button type="submit" class="btn btn-primary" data-toggle="tooltip" data-original-title="Отфильтровать">
@@ -72,7 +70,6 @@
                                 <td>{{$user->id}}</td>
                                 <td>{{$user->user_name}}</td>
                                 <td>{{$user->email}}</td>
-                                <td>{{$user->ads_rise}}</td>
                                 <td>
                                     @if (1 == $user->blocked)
                                         <i class="fa fa-ban"></i>

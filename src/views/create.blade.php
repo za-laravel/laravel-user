@@ -1,4 +1,4 @@
-@extends('admin.adminLayout')
+@extends('laravel-admin::layout')
 @section('title')
     Полезная пользователя
 @stop
@@ -26,7 +26,7 @@
                             {!! Form::model($user,['route'=>['admin.user.store'],
                             'method' => 'POST',
                             'class'=>'form-horizontal', 'role'=>'form']) !!}
-                                @include('admin.user._form-create')
+                                @include('admin.user._form')
                             {!! Form::close() !!}
                         </div>
                         <!-- /.col-lg-6 (nested) -->

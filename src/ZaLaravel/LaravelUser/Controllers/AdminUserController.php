@@ -10,6 +10,7 @@ use ZaLaravel\LaravelUser\Models\Interfaces\UserInterface;
 
 use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Request as RequestFacade;
 
 class AdminUserController extends AbstractAdminController {
 
@@ -49,10 +50,10 @@ class AdminUserController extends AbstractAdminController {
 	 *
 	 * @return Response
 	 */
-	public function create(User $user)
+	public function create(UserInterface $user)
 	{
         $roles = Role::orderBy('id', 'asc')->get();
-		return view('admin.user.create', ['user' => $user, 'roles'=> $roles]);
+		return view('laravel-user::create', ['user' => $user, 'roles'=> $roles]);
 	}
 
 	/**
@@ -67,7 +68,6 @@ class AdminUserController extends AbstractAdminController {
         $user = $registrar->create($data);
 
         $user->roles()->sync($data['roleCheck']);
-        \ProfileService::createProfile($request, $user['id']);
 
         \Session::flash('message', 'Пользователь создан');
         return redirect()->route('admin.user.index');
@@ -90,10 +90,10 @@ class AdminUserController extends AbstractAdminController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit(User $user)
+	public function edit(UserInterface $user)
 	{
         $roles = Role::orderBy('id', 'asc')->get();
-        return view('admin.user.edit', ['user' => $user, 'roles'=> $roles]);
+        return view('laravel-user::edit', ['user' => $user, 'roles'=> $roles]);
 	}
 
 	/**
@@ -102,7 +102,7 @@ class AdminUserController extends AbstractAdminController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update(User $user, Requests\UserRequest $request)
+	public function update(UserInterface $user, Requests\UserRequest $request)
 	{
         $data = $request->all();
 
@@ -111,7 +111,6 @@ class AdminUserController extends AbstractAdminController {
 
         if ($user->update($data)) {
             $user->roles()->sync($data['roleCheck']);
-            \ProfileService::updateProfile($request, $user->profile);
         }
         \Session::flash('message', 'Пользователь обновлен');
         return redirect()->route('admin.user.index');
@@ -123,14 +122,14 @@ class AdminUserController extends AbstractAdminController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy(User $user)
+	public function destroy(UserInterface $user)
 	{
 		$user->delete();
         return redirect()->route('admin.user.index');
 	}
 
-    public function block(User $user){
-        $user->update(\Request::all());
+    public function block(UserInterface $user){
+        $user->update(RequestFacade::all());
         return redirect()->route('admin.user.index');
     }
 
