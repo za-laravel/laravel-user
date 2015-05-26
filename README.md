@@ -4,7 +4,7 @@ User functionality package for Laravel 5
 
 ## Installation
 
-  * install package with ```composer require za-laravel/laravel-user``` 
+  * install package with ```composer require za-laravel/laravel-user:"dev-master"``` 
   
   * Now append service provider to providers array in config/app.php.
      
