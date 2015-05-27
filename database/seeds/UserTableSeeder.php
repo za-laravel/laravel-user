@@ -18,7 +18,7 @@ class UserTableSeeder extends Seeder{
             $user = $model::create([
                 'email' => $faker->email,
                 'password' => Hash::make('1234'),
-                'user_name' => $faker->name,
+                'user_name' => $faker->userName,
                 'blocked' => rand(0,1),
             ]);
         }

@@ -25,19 +25,13 @@ class UserRequest extends Request {
 	{
         if ('POST' == $this->method()) {
             return [
-                'name' => 'required|max:32',
-                'last_name' => 'required|max:32',
-                'user_name' => 'required|unique:users|max:16|min:4|regex:/^[\w\-\_]+$/',
+                'user_name' => 'required|unique:users|max:16|min:4|regex:/^[\w\-\_\.]+$/',
                 'email' => 'required|email|max:255|unique:users',
                 'password' => 'required|min:6|regex:/^[\w\-\_]+$/',
-                'ads_rise' => 'regex:/^\d+$/'
             ];
         } elseif ('PATCH' == $this->method()){
             return [
-                'name' => 'required|max:32',
-                'last_name' => 'required|max:32',
-                'user_name' => 'required|regex:/^[\w\-\_]+$/',
-                'ads_rise' => 'regex:/^\d+$/'
+                'user_name' => 'required|regex:/^[\w\-\_\.]+$/',
             ];
         }
 	}
@@ -45,10 +39,6 @@ class UserRequest extends Request {
     public function messages()
     {
         return [
-            'name.required' => 'Введите имя',
-            'name.max' => 'Имя слишком длинное',
-            'last_name.required' => 'Введите фамилию',
-            'last_name.max' => 'Фамилия слишком длинная',
             'email.required' => 'Заполните поле email',
             'email.email' => 'Введите правильный email',
             'email.max' => 'Email слишком длинный',
