@@ -53,7 +53,7 @@ class AdminUserController extends AbstractAdminController {
 	public function create(UserInterface $user)
 	{
         $roles = Role::orderBy('id', 'asc')->get();
-		return view('laravel-user::create', ['user' => $user, 'roles'=> $roles]);
+		return view('laravel-user::create', ['user' => $user, 'roles'=> $roles, 'action' => 'create']);
 	}
 
 	/**
@@ -93,7 +93,7 @@ class AdminUserController extends AbstractAdminController {
 	public function edit(UserInterface $user)
 	{
         $roles = Role::orderBy('id', 'asc')->get();
-        return view('laravel-user::edit', ['user' => $user, 'roles'=> $roles]);
+        return view('laravel-user::edit', ['user' => $user, 'roles'=> $roles, 'action' => 'edit']);
 	}
 
 	/**

@@ -6,12 +6,30 @@
     </div>
 </div>
 
-<div class="form-group">
-    {!! Form::label('email', 'email', ["class"=>"col-sm-3 control-label"]) !!}
-    <div class="col-sm-6">
-        <p>{{ $user->email }}</p>
+@if ('create' == $action)
+    <div class="form-group">
+        {!! Form::label('email', 'email', ["class"=>"col-sm-3 control-label"]) !!}
+        <div class="col-sm-6">
+            {!! Form::email('email', null, ["class"=>"form-control",
+            "placeholder"=>"email",'required' => 'required' ]) !!}
+        </div>
     </div>
-</div>
+
+    <div class="form-group">
+        {!! Form::label('password', 'Пароль', ["class"=>"col-sm-3 control-label"]) !!}
+        <div class="col-sm-6">
+            {!! Form::text('password', null, ["class"=>"form-control",
+            "placeholder"=>"Пароль", 'required', 'pattern' => '[\w\-\_]+']) !!}
+        </div>
+    </div>
+@else
+    <div class="form-group">
+        {!! Form::label('email', 'email', ["class"=>"col-sm-3 control-label"]) !!}
+        <div class="col-sm-6">
+            <p>{{ $user->email }}</p>
+        </div>
+    </div>
+@endif
 
 <div class="form-group">
     {!! Form::label('role', 'Роли', ["class"=>"col-sm-3 control-label"]) !!}
