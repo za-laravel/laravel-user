@@ -19,7 +19,6 @@ class UserTableSeeder extends Seeder{
                 'email' => $faker->email,
                 'password' => Hash::make('1234'),
                 'user_name' => $faker->name,
-                'ads_rise' => 5,
                 'blocked' => rand(0,1),
             ]);
         }
