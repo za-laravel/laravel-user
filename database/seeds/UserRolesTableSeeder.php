@@ -15,7 +15,7 @@ class UserRolesTableSeeder extends Seeder
         array(
             array('user_id' => '1','role_id' => 1,'created_at' => 'NOW()',
             'updated_at' => 'NOW()'),
-            array('user_id' => '1','role_id' => 4,'created_at' => 'NOW()',
+            array('user_id' => '1','role_id' => 3,'created_at' => 'NOW()',
                 'updated_at' => 'NOW()'),
         ));
         
