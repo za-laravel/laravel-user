@@ -22,7 +22,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12   ">
-                            @include('partials.errors.basic')
+                            @include('laravel-admin::partials.errors.basic')
                             {!! Form::model($user,['route'=>['admin.user.store'],
                             'method' => 'POST',
                             'class'=>'form-horizontal', 'role'=>'form']) !!}
