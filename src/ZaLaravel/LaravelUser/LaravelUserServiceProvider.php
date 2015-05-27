@@ -15,8 +15,17 @@ class LaravelUserServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadViewsFrom(__DIR__ . '/../../views', 'laravel-user');
-
         $this->app->bind('ZaLaravel\LaravelUser\Models\Interfaces\UserInterface', Config::get('auth.model'));
+
+        $this->publishes([
+            __DIR__.'/../../../database/migrations/' => database_path('/migrations')
+        ], 'migrations');
+
+        $this->publishes([
+            __DIR__.'/../../../database/seeds/' => database_path('/seeds')
+        ], 'seeds');
+
+        include __DIR__ . '/../../routes.php';
     }
     /**
      * Register the service provider.
