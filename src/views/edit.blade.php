@@ -26,7 +26,7 @@
                             {!! Form::model($user,['route'=>['admin.user.update','id' => $user->id],
                             'method' => 'PATCH',
                             'class'=>'form-horizontal', 'role'=>'form']) !!}
-                            @include('admin.user._form')
+                            @include('laravel-user::_form')
                             {!! Form::close() !!}
                         </div>
                         <!-- /.col-lg-6 (nested) -->
