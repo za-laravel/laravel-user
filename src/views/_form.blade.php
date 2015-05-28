@@ -2,7 +2,7 @@
     {!! Form::label('name', 'Имя пользователя', ["class"=>"col-sm-3 control-label"]) !!}
     <div class="col-sm-6">
         {!! Form::text('name', $user->name, ["class"=>"form-control",
-        "placeholder"=>"Логин",'required' => 'required', 'pattern' => '[\w\-\_]+' ]) !!}
+        "placeholder"=>"Логин",'required' => 'required', 'pattern' => '[\w\-\_\.]+' ]) !!}
     </div>
 </div>
 
