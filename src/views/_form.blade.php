@@ -1,7 +1,7 @@
 <div class="form-group">
-    {!! Form::label('user_name', 'Имя пользователя', ["class"=>"col-sm-3 control-label"]) !!}
+    {!! Form::label('name', 'Имя пользователя', ["class"=>"col-sm-3 control-label"]) !!}
     <div class="col-sm-6">
-        {!! Form::text('user_name', $user->user_name, ["class"=>"form-control",
+        {!! Form::text('name', $user->name, ["class"=>"form-control",
         "placeholder"=>"Логин",'required' => 'required', 'pattern' => '[\w\-\_]+' ]) !!}
     </div>
 </div>
