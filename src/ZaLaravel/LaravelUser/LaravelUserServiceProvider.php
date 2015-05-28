@@ -16,6 +16,7 @@ class LaravelUserServiceProvider extends ServiceProvider
     {
         $this->loadViewsFrom(__DIR__ . '/../../views', 'laravel-user');
         $this->app->bind('ZaLaravel\LaravelUser\Models\Interfaces\UserInterface', Config::get('auth.model'));
+        $this->app->bind('Illuminate\Contracts\Auth\Registrar', 'ZaLaravel\LaravelUser\Services\Registrar');
 
         $this->publishes([
             __DIR__.'/../../../database/migrations/' => database_path('/migrations')
