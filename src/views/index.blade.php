@@ -46,7 +46,7 @@
                                 {!! Form::text('id', $f_id, ['class' => 'form-control', 'size' => '3'] ) !!}
                             </th>
                             <th>
-                                {!! Form::text('user_name', $f_user_name, ['class' => 'form-control'] ) !!}
+                                {!! Form::text('name', $f_name, ['class' => 'form-control'] ) !!}
                             </th>
                             <th>
                                 {!! Form::text('email', $f_email, ['class' => 'form-control'] ) !!}
@@ -68,7 +68,7 @@
                         @foreach($users as $user)
                             <tr>
                                 <td>{{$user->id}}</td>
-                                <td>{{$user->user_name}}</td>
+                                <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
                                 <td>
                                     @if (1 == $user->blocked)

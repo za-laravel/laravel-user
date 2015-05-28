@@ -31,8 +31,8 @@ class AdminUserController extends AbstractAdminController {
             $users = $users->where('email', 'LIKE', '%'.$request->input('email').'%');
         }
 
-        if ($request->input('user_name')) {
-            $users = $users->where('user_name', 'LIKE', '%'.$request->input('user_name').'%');
+        if ($request->input('name')) {
+            $users = $users->where('name', 'LIKE', '%'.$request->input('name').'%');
         }
 
         $users = $users->paginate(10);
@@ -41,7 +41,7 @@ class AdminUserController extends AbstractAdminController {
             'users' => $users,
             'f_id' => $request->input('id'),
             'f_email' => $request->input('email'),
-            'f_user_name' => $request->input('user_name')
+            'f_name' => $request->input('name')
         ]);
 	}
 
