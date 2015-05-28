@@ -25,13 +25,13 @@ class UserRequest extends Request {
 	{
         if ('POST' == $this->method()) {
             return [
-                'user_name' => 'required|unique:users|max:16|min:4|regex:/^[\w\-\_\.]+$/',
+                'name' => 'required|unique:users|max:16|min:4|regex:/^[\w\-\_\.]+$/',
                 'email' => 'required|email|max:255|unique:users',
                 'password' => 'required|min:6|regex:/^[\w\-\_]+$/',
             ];
         } elseif ('PATCH' == $this->method()){
             return [
-                'user_name' => 'required|regex:/^[\w\-\_\.]+$/',
+                'name' => 'required|regex:/^[\w\-\_\.]+$/',
             ];
         }
 	}
@@ -43,10 +43,10 @@ class UserRequest extends Request {
             'email.email' => 'Введите правильный email',
             'email.max' => 'Email слишком длинный',
             'email.unique' => 'Пользователь с таким email уже зарегестрирован',
-            'user_name.required' => 'Введите логин',
-            'user_name.min' => 'Логин слишком короткий',
-            'user_name.max' => 'Логин слишком длинный',
-            'user_name.unique' => 'Пользователь с таким логином уже есть в базе',
+            'name.required' => 'Введите логин',
+            'name.min' => 'Логин слишком короткий',
+            'name.max' => 'Логин слишком длинный',
+            'name.unique' => 'Пользователь с таким логином уже есть в базе',
             'password.min' => 'Пароль должен содержать минимум 6 символов',
             'password.required' => 'Введите пароль'
 
