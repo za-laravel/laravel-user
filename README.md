@@ -21,7 +21,6 @@ User functionality package for Laravel 5
          'Illuminate\Auth\AuthServiceProvider',
          ...
          'ZaLaravel\LaravelUser\LaravelUserServiceProvider',
-     
      ),
      ?>
      ```
